@@ -1,0 +1,95 @@
+# Chapter 8 Volatility
+
+
+## Definition of volatility
+
+- The **continuously compounded return** per day for a market variable whose value is $S_i$ at the end of day $i$ is $u_i=\ln(S_i/S_{i-1})$, where $S_i$ is today’s value and $S_{i-1}$ is yesterday’s value, and for a short time period this is almost exactly the proportional change $(S_i-S_{i-1})/S_{i-1}$.
+- A variable’s volatility $\sigma$ is defined as the **standard deviation of the return provided by the variable per unit of time when the return is expressed using continuous compounding**, with the unit of time usually one year for option pricing and one day for risk management.
+- An alternative definition of daily volatility is the **standard deviation of the proportional change** in the variable during a day, which is the definition usually used in risk management because daily continuously compounded returns and daily proportional changes are almost the same.
+- If continuously compounded returns each day are independent with the same variance, the variance of the return over $T$ days is $T$ times the one-day variance and the standard deviation is $\sqrt{T}$ times the one-day standard deviation, so “**uncertainty increases with the square root of time**.”
+
+### Variance rate
+
+- The variance rate per day is the variance of the return in one day, equal to the square of daily volatility, and while the standard deviation of return over time $T$ increases with $\sqrt{T}$, the variance increases linearly with $T$.
+
+### business days vs. calendar days
+
+- Because research shows that volatility is much higher on business days than on non-business days, analysts tend to ignore weekends and holidays and usually assume **252 trading days per year**, so $\sigma_{yr}=\sigma_{day}\sqrt{252}$ and $\sigma_{day}=\sigma_{yr}/\sqrt{252}$, where $\sigma_{yr}$ is annual volatility and $\sigma_{day}$ is daily volatility.
+
+## Implied volatilities
+
+### The VIX index
+
+- The **VIX** is CBOE’s index of the implied volatility of 30-day options on the S&P 500 calculated from a wide range of calls and puts, and market participants sometimes refer to it as the fear index because it tends to spike during periods of major uncertainty and market decline.
+- Although it is natural to think volatility is caused by **new information reaching the market**, research comparing close-to-close and Friday-to-Monday variances suggests that volatility is, **to a large extent, caused by trading itself**.
+
+## Are Daily Percentage Changes in Financial Variables Normal?
+
+- In practice, most financial variables are more likely to experience big moves than the normal distribution would suggest, so their percentage daily changes have **heavier tails** than the normal distribution.
+- In the exchange-rate data in Table 8.1, daily percentage changes exceed three standard deviations on 1.30% of days, whereas the normal model predicts only 0.27% of days, providing evidence that real-world exchange-rate changes have heavier tails than the normal model.
+- The reason heavy tails are observed over both short and relatively long periods is that **returns on successive days are not identically distributed**, in part because volatility is not constant, so the central limit theorem does not quickly make the return distribution normal.
+
+
+## The power law
+
+- The power law asserts that for many practical variables $v$, when $x$ is large, $\operatorname{Prob}(v>x)=Kx^{-\alpha}$, where $K$ and $\alpha$ are constants, $v$ is the variable being measured, and $x$ is a large threshold, meaning that **tail probabilities decline as a power of the threshold rather than as in a normal distribution**.
+
+
+## Monitoring daily volatility
+
+- One approach to estimating the variance rate $\sigma_n^2$ for day $n$ is $\sigma_n^2=\frac{1}{m-1}\sum_{i=1}^{m}(u_{n-i}-\bar u)^2$ with $\bar u=\frac{1}{m}\sum_{i=1}^{m}u_{n-i}$, where $m$ is the number of most recent observations, $u_{n-i}$ is the return $i$ days before day $n$, and $\bar u$ is their mean, so the volatility estimate is the **sample standard deviation of recent daily returns**.
+- For risk management, equation 8.2 is usually changed by defining $u_i=(S_i-S_{i-1})/S_{i-1}$ instead of $\ln(S_i/S_{i-1})$, assuming $\bar u=0$, and replacing $m-1$ by $m$, which gives $\sigma_n^2=\frac{1}{m}\sum_{i=1}^{m}u_{n-i}^2$ as a maximum likelihood estimate based on squared daily percentage changes.
+
+### Weighting schemes
+
+- An ARCH($m$) model estimates variance as $\sigma_n^2=\gamma V_L+\sum_{i=1}^{m}\alpha_i u_{n-i}^2$, equivalently $\sigma_n^2=\omega+\sum_{i=1}^{m}\alpha_i u_{n-i}^2$ with $\omega=\gamma V_L$, where $V_L$ is the long-run variance rate, $\gamma$ is its weight, and $\alpha_i$ is the weight on the squared return $i$ days ago, so recent observations and the long-run average jointly determine the current variance estimate.
+
+## The Exponentially Weighted Moving Average Model
+
+- The exponentially weighted moving average model is the special case of the weighted-average model in which the weights on past squared returns decrease exponentially as observations move back through time, with $\alpha_i=(1-\lambda)\lambda^{i-1}$ for a constant $0<\lambda<1$.
+- The EWMA update formula is $\sigma_n^2=\lambda\sigma_{n-1}^2+(1-\lambda)u_{n-1}^2$, where $\sigma_n^2$ is the variance estimate for day $n$, $\sigma_{n-1}^2$ is the previous variance estimate, $u_{n-1}$ is the most recent daily percentage change, and $\lambda$ controls how slowly the estimate responds to new information.
+- The EWMA approach has **modest data storage requirements** because at any time it requires only the current estimate of the variance rate and the most recent observation on the market variable.
+- The EWMA approach is **designed to track changes in volatility** because a large recent squared return $u_{n-1}^2$ moves the variance estimate upward, with a low $\lambda$ making volatility estimates highly responsive and a high $\lambda$ making them respond relatively slowly.
+
+## The GARCH(1,1) Model
+
+- The difference between EWMA and GARCH(1,1) is that GARCH(1,1) calculates $\sigma_n^2=\gamma V_L+\alpha u_{n-1}^2+\beta\sigma_{n-1}^2$, equivalently $\sigma_n^2=\omega+\alpha u_{n-1}^2+\beta\sigma_{n-1}^2$ with $\omega=\gamma V_L$, so it includes the long-run average variance rate $V_L$ as well as the most recent squared return and previous variance estimate.
+
+### The weights
+
+- In GARCH(1,1), the parameter $\beta$ can be interpreted as a **decay rate** because the weight applied to $u_{n-i}^2$ is $\alpha\beta^{i-1}$, so older squared returns receive exponentially declining weights and $\beta$ defines their relative importance.
+
+## Choosing between the models
+
+- The **GARCH(1,1) model incorporates mean reversion** because variance rates tend to be pulled back to a long-run average level, making it theoretically more appealing than EWMA, which is the special case with no weight on the long-run variance.
+
+## Maximum likelihood methods
+
+
+### Estimating a constant variance
+
+- For observations $u_1,\ldots,u_m$ drawn from a normal distribution with zero mean and variance $v$, maximum likelihood maximizes $\prod_{i=1}^{m}\left[\frac{1}{\sqrt{2\pi v}}\exp\left(-\frac{u_i^2}{2v}\right)\right]$, equivalently maximizes $\sum_{i=1}^{m}[-\ln(v)-u_i^2/v]$, and gives the estimator $v=\frac{1}{m}\sum_{i=1}^{m}u_i^2$, where $v$ is the variance and $u_i$ are the observations.
+
+### Estimating EWMA or GARCH(1,1)
+
+- To estimate EWMA or GARCH(1,1) by maximum likelihood, define $v_i=\sigma_i^2$ as the variance estimated for day $i$ and choose the model parameters that maximize $\sum_{i=1}^{m}[-\ln(v_i)-u_i^2/v_i]$, where $u_i$ is the daily percentage change and $v_i$ is the conditional variance generated by the volatility-updating procedure.
+- **Variance targeting** is a more robust approach to estimating GARCH(1,1) parameters that **sets the long-run variance rate $V_L$ equal to the sample variance or another reasonable value**, sets $\omega=V_L(1-\alpha-\beta)$, and then estimates only $\alpha$ and $\beta$.
+
+
+### How good is the model?
+
+- An intuitive inspection says that a GARCH model has done a good job explaining the data if the autocorrelations in $u_i^2/\sigma_i^2$ are much smaller than the autocorrelations in $u_i^2$, because **the model has largely removed the volatility clustering in squared returns**.
+- The Ljung-Box statistic is $m\sum_{k=1}^{K}w_k c_k^2$ with $w_k=(m+2)/(m-k)$, where $m$ is the number of observations, $K$ is the number of lags, and $c_k$ is the autocorrelation at lag $k$, and for $K=15$ zero autocorrelation can be rejected with 95% confidence when the statistic is greater than 25.
+    - The Ljung-Box statistic tests whether autocorrelations are statistically significant, with larger values indicating significant autocorrelation; a value exceeding the critical threshold suggests the model has not adequately removed volatility clustering.
+
+## Using GARCH(1,1) to Forecast Future Volatility
+
+- GARCH(1,1) forecasts future variance with $E[\sigma_{n+t}^2]=V_L+(\alpha+\beta)^t(\sigma_n^2-V_L)$, where $E[\sigma_{n+t}^2]$ is the expected variance rate on day $n+t$, $V_L$ is the long-run variance rate, $\sigma_n^2$ is the current variance estimate, and $\alpha+\beta<1$ makes the forecast mean-revert toward $V_L$ as $t$ increases.
+
+### Volatility term structures
+
+- The volatility term structure is the **relationship between option volatilities and their maturities**, and under GARCH(1,1) the $T$-day annualized option volatility satisfies $\sigma(T)^2=252\left\{V_L+\frac{1-e^{-aT}}{aT}[V(0)-V_L]\right\}$ with $a=\ln[1/(\alpha+\beta)]$, where $V(0)$ is the current instantaneous variance rate and $V_L$ is the long-run variance rate.
+
+### Impact of volatility changes
+
+- When the instantaneous annual volatility $\sigma(0)$ changes by $\Delta\sigma(0)$, the $T$-day option volatility changes approximately by $\frac{1-e^{-aT}}{aT}\frac{\sigma(0)}{\sigma(T)}\Delta\sigma(0)$, where $a=\ln[1/(\alpha+\beta)]$, $T$ is the option life in days, $\sigma(0)$ is the current instantaneous annual volatility, and $\sigma(T)$ is the annualized volatility for a $T$-day option.
