@@ -1,5 +1,49 @@
 # Chapter 14 Bond Prices and Yields 
 
+## Table of Contents
+
+- [Summary (TLDR)](#summary-tldr)
+- [Bond characteristics](#bond-characteristics)
+  - [Treasury bonds and notes](#treasury-bonds-and-notes)
+    - [Accrued Interest and Quoted Bond Prices](#accrued-interest-and-quoted-bond-prices)
+  - [Corporate bonds](#corporate-bonds)
+    - [Call Provisions on Corporate Bonds](#call-provisions-on-corporate-bonds)
+    - [Convertible bonds](#convertible-bonds)
+    - [Puttable bonds](#puttable-bonds)
+    - [Floating-rate bonds](#floating-rate-bonds)
+  - [Preferred stock](#preferred-stock)
+  - [Other domestic issues](#other-domestic-issues)
+  - [International bonds](#international-bonds)
+  - [Innovation in the bond market](#innovation-in-the-bond-market)
+- [Bond pricing](#bond-pricing)
+  - [Bond Pricing between Coupon Dates](#bond-pricing-between-coupon-dates)
+- [Bond yields](#bond-yields)
+  - [Yield to maturity](#yield-to-maturity)
+  - [Yield to call](#yield-to-call)
+  - [Realized Compound Return versus Yield to Maturity](#realized-compound-return-versus-yield-to-maturity)
+- [Bond prices over time](#bond-prices-over-time)
+  - [Yield to maturity versus holding-period return](#yield-to-maturity-versus-holding-period-return)
+  - [Zero-Coupon Bonds and Treasury Strips](#zero-coupon-bonds-and-treasury-strips)
+  - [After-tax returns](#after-tax-returns)
+- [Default risk and bond pricing](#default-risk-and-bond-pricing)
+  - [Junk bonds](#junk-bonds)
+  - [Determinants of Bond Safety](#determinants-of-bond-safety)
+  - [Bond indentures](#bond-indentures)
+    - [Sinking funds](#sinking-funds)
+    - [Subordination of Further Debt](#subordination-of-further-debt)
+    - [Dividend Restrictions](#dividend-restrictions)
+    - [Collateral](#collateral)
+  - [Yield to Maturity and Default Risk](#yield-to-maturity-and-default-risk)
+  - [Credit Default Swaps](#credit-default-swaps)
+  - [Credit Risk and Collateralized Debt Obligations](#credit-risk-and-collateralized-debt-obligations)
+
+
+
+## Summary (TLDR)
+
+Bond models are cash-flow discounting models whose outputs are highly sensitive to assumptions about rates, timing, embedded options, credit risk, liquidity, taxes, and legal structure. A bond’s fair value is the present value of coupons and principal, so validation should start by checking cash-flow construction, discount-rate conventions, day-count/accrued-interest treatment, coupon frequency, and whether the model distinguishes flat price from invoice price. Yield metrics are not interchangeable: YTM assumes holding to maturity and reinvestment at the same yield, while realized return depends on future reinvestment rates and exit price. Callable, puttable, floating-rate, convertible, zero-coupon, and structured bonds require special handling because their effective cash flows change with market conditions. Interest-rate risk generally rises with maturity, while premium and discount bonds converge toward par over time. Credit-risk modeling should not rely only on promised yield; expected yield must incorporate default probability, loss severity, collateral, seniority, covenants, leverage, liquidity, and profitability indicators. For structured products such as CDOs or CDS-linked exposures, model review should scrutinize tranche assumptions, correlation, conflicts of interest, and stress behavior under widening default premiums. 
+
+
 ## Bond characteristics
 
 - A bond is a debt security issued in a borrowing arrangement that represents the issuer’s promise to make specified payments to the bondholder on specified dates.

@@ -1,6 +1,34 @@
 # Chapter 15 The Term Structure of Interest Rates
 
 
+## Table of Contents
+
+- [Summary (TLDR)](#summary-tldr)
+- [The Yield Curve](#the-yield-curve)
+  - [Bond pricing](#bond-pricing)
+- [The Yield Curve and Future Interest Rates](#the-yield-curve-and-future-interest-rates)
+  - [The Yield Curve under Certainty](#the-yield-curve-under-certainty)
+  - [Holding-period returns](#holding-period-returns)
+  - [Forward rates](#forward-rates)
+- [Interest Rate Uncertainty and Forward Rates](#interest-rate-uncertainty-and-forward-rates)
+- [Theories of the Term Structure](#theories-of-the-term-structure)
+  - [The Expectations Hypothesis](#the-expectations-hypothesis)
+  - [Liquidity Preference Theory](#liquidity-preference-theory)
+  - [Market Segmentation](#market-segmentation)
+- [Interpreting the Term Structure](#interpreting-the-term-structure)
+- [Forward Rates as Forward Contracts](#forward-rates-as-forward-contracts)
+
+
+## Summary (TLDR)
+
+The term structure is the foundation of fixed-income valuation: each promised cash flow should be discounted using the zero-coupon spot rate matching its maturity, rather than one yield to maturity for the entire instrument. For model risk management, curve construction and governance are therefore critical. Validate market-data selection, instrument liquidity, bootstrapping and interpolation methods, compounding conventions, day counts, and extrapolation beyond observable maturities. Reprice calibration instruments and test that stripping and reconstitution obey the Law of One Price; unexplained pricing differences may reveal implementation errors, stale inputs, or inconsistent conventions.
+
+Forward rates are break-even rates implied by adjacent spot rates, not unbiased forecasts of future short rates. They may embed time-varying liquidity and term premiums, investor preferences, and market segmentation. Models that treat forwards as expected future rates should document and test that assumption. Yield-curve shape also should not be interpreted mechanically: an upward slope can reflect expected rate increases or positive liquidity premiums, while inversion may indicate expected declines but is not deterministic.
+
+Daily controls should include curve-shock and key-rate stress tests, sensitivity to interpolation choices, benchmark and challenger comparisons, input-quality monitoring, and stability checks across market regimes. Synthetic forward-loan replication provides a useful no-arbitrage test for validating forward-rate calculations and cash-flow timing.
+
+
+
 ## The Yield Curve
 
 - A yield curve is a plot of yield to maturity as a function of time to maturity, and it is central to bond valuation and to comparing an investor’s expectations for future interest rates against those of the market.
