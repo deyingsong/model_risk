@@ -1,18 +1,25 @@
 # Chapter 1 Institutions and market structure
 
+## Summary
+
+Market data is not a neutral input: it is produced by a specific trading protocol. Order-driven, quote-driven, auction, crossing, and hybrid markets differ in who supplies liquidity, how prices are formed, and what information is visible before and after trades. Those details affect observed spreads, volumes, volatility, execution prices, and apparent liquidity. A risk model calibrated on continuous trading data may not behave well around opening and closing auctions, where single-price clearing and imbalance rules dominate. Similarly, hidden orders, anonymity, transparency rules, and specialist or market-maker obligations can make the same statistical signal mean different things across venues.
+
+The practical takeaway is to treat venue, session, order type, and transparency regime as model features and validation dimensions, not operational background. Backtests, liquidity haircuts, execution cost models, stress scenarios, and market impact assumptions should be segmented by protocol and time of day. In model governance, ask whether the model implicitly assumes immediate execution, stable depth, or homogeneous price discovery. When market structure changes, such as NYSE hybridization or expanded automatic execution, model performance should be revalidated because the data-generating process has changed.
+
 ## Table of Contents
 
-1. [Trading protocol](#trading-protocol)
-    - [Order-driven markets](#order-driven-markets)
-      - [Auction markets](#auction-markets)
-      - [Quote-driven markets](#quote-driven-markets)
-      - [Hybrid markets](#hybrid-markets)
-      - [Transparency](#transparency)
-2. [Market structure](#market-structure)
-    - [Market structures around the world](#market-structures-around-the-world)
-    - [The market structure of the NYSE](#the-market-structure-of-the-nyse-new-york-stock-exchange)
-    - [The hybrid market model](#the-hybrid-market-model)
-3. [Orders and order properties](#orders-and-order-properties)
+1. [Summary](#summary)
+2. [Trading protocol](#trading-protocol)
+   - [Order-driven markets](#order-driven-markets)
+     - [Auction markets](#auction-markets)
+     - [Quote-driven markets](#quote-driven-markets)
+     - [Hybrid markets](#hybrid-markets)
+     - [Transparency](#transparency)
+3. [Market structure](#market-structure)
+   - [Market structures around the world](#market-structures-around-the-world)
+   - [The market structure of the NYSE (New York Stock Exchange)](#the-market-structure-of-the-nyse-new-york-stock-exchange)
+   - [The hybrid market model](#the-hybrid-market-model)
+4. [Orders and order properties](#orders-and-order-properties)
 
 
 ## Trading protocol
