@@ -1,12 +1,19 @@
 # Chapter 24 Enterprise Risk Management
 
+## Summary
+
+This chapter broadens the frame from individual models to enterprise decision quality. ERM asks whether the firm understands major adverse events, their interactions, and whether strategy stays within risk appetite. Quantitative measures such as VaR, expected shortfall, portfolio beta, and concentration limits help translate appetite into constraints, but they are only useful when paired with governance, culture, incentives, and scenario thinking. The Wells Fargo, Bankers Trust, Metro do Porto, and ABACUS examples show how short-term revenue pressure can create long-term legal, reputational, and strategic losses that standard market-risk models may miss.
+
+The daily takeaway is to connect model validation to business purpose and risk culture. Ask whether model outputs encourage behavior consistent with the firm's appetite, whether tail scenarios are credible, and whether users understand trade-offs between near-term profit and future harm. Biases such as anchoring, availability, representativeness, and inverted conditional probabilities can distort both model design and management interpretation. ERM-oriented validation should include scenario analysis, concentration review, emerging-risk assessment, challenge of strategic assumptions, and clear escalation paths. A technically sound model can still be dangerous if it supports a strategy that fails badly in the wrong scenario.
+
 ## Table of Contents
 
-1. [Risk appetite](#risk-appetite)
-2. [Risk culture](#risk-culture)
-3. [Identifying major risks](#identifying-major-risks)
-    - [Cognitive biases](#cognitive-biases)
-    - [Strategic risk management](#strategic-risk-management)
+1. [Summary](#summary)
+2. [Risk appetite](#risk-appetite)
+3. [Risk culture](#risk-culture)
+4. [Identifying major risks](#identifying-major-risks)
+   - [Cognitive biases](#cognitive-biases)
+   - [Strategic risk management](#strategic-risk-management)
 
 -----
 

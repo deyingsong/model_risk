@@ -1,20 +1,27 @@
 # Chapter 22 Model Risk Management
 
+## Summary
+
+SR 11-7 frames model risk as adverse consequences from incorrect or misused model output, which means validation must cover data, theory, implementation, use, monitoring, and governance. Financial models are unlike physics models: markets, customers, and borrowers adapt, parameters shift, and simple assumptions can create large losses when incentives or controls are weak. The Kidder Peabody and interest-rate futures examples show that model risk can arise from basic economic misunderstandings, not just sophisticated algorithms.
+
+The daily takeaway is to validate both the model and its use. For actively traded products, pricing models may mainly interpolate market data, but hedge sensitivities, extreme volatility surfaces, and sparse observations still require challenge. For less liquid products, model choice can drive valuation, so use benchmark models, price ranges, calibration checks, and methods such as weighted Monte Carlo where appropriate. P&L attribution should separate unhedged risks, hedging-model errors, and new trading. Governance should classify fair-value reliability, monitor unusual trading patterns and profits, avoid overfitting and over-parameterization, and require documentation that explains what the model captures, what it omits, and when it should not be trusted.
+
 ## Table of Contents
 
-1. [Regulatory guidance](#regulatory-guidance)
-2. [Models in physics and finance](#models-in-physics-and-finance)
-3. [Simple models: expensive mistakes](#simple-models-expensive-mistakes)
-    - [Monitoring trading patterns](#monitoring-trading-patterns)
-4. [Models for pricing actively traded products](#models-for-pricing-actively-traded-products)
-    - [Sources of model risk for actively traded products](#sources-of-model-risk-for-actively-traded-products)
-    - [Hedging](#hedging)
-    - [P&L decomposition](#pl-decomposition)
-5. [Models for Less Actively Traded Products](#models-for-less-actively-traded-products)
-    - [Weighted Monte Carlo simulation](#weighted-monte-carlo-simulation)
-6. [Accounting](#accounting)
-7. [What Makes a Successful Pricing Model?](#what-makes-a-successful-pricing-model)
-8. [Model-Building Missteps](#model-building-missteps)
+1. [Summary](#summary)
+2. [Regulatory guidance](#regulatory-guidance)
+3. [Models in physics and finance](#models-in-physics-and-finance)
+4. [Simple models: expensive mistakes](#simple-models-expensive-mistakes)
+   - [Monitoring trading patterns](#monitoring-trading-patterns)
+5. [Models for pricing actively traded products](#models-for-pricing-actively-traded-products)
+   - [Sources of model risk for actively traded products](#sources-of-model-risk-for-actively-traded-products)
+   - [Hedging](#hedging)
+   - [P&L decomposition](#pl-decomposition)
+6. [Models for Less Actively Traded Products](#models-for-less-actively-traded-products)
+   - [Weighted Monte Carlo simulation](#weighted-monte-carlo-simulation)
+7. [Accounting](#accounting)
+8. [What Makes a Successful Pricing Model?](#what-makes-a-successful-pricing-model)
+9. [Model-Building Missteps](#model-building-missteps)
 
 
 ## Regulatory guidance

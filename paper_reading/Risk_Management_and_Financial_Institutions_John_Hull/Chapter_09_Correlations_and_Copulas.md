@@ -1,5 +1,34 @@
 # Chapter 9 Correlations and Copulas
 
+## Summary
+
+Correlation is only a narrow summary of dependence. Zero correlation does not imply independence, and linear correlation can miss nonlinear, state-dependent, and tail relationships that matter most in stress. Variance-covariance matrices must be internally consistent and positive semi-definite; otherwise portfolio variances, simulations, and risk reports can become mathematically impossible. EWMA and GARCH-style covariance updates should use weighting schemes consistent with volatility estimates. Factor models reduce dimensionality but impose structure that must be validated against economic intuition and empirical behavior.
+
+The daily takeaway is to treat dependence modeling as a core validation topic, not a calibration detail. Check whether correlations rise in stress, whether the matrix is stable and positive semi-definite, and whether simulation methods reproduce intended marginal distributions and joint behavior. Copulas are useful because they separate marginal distributions from dependence, but Gaussian copulas can understate joint tail events. Student's t-copulas or heavy-tailed factor copulas may better capture simultaneous defaults or market moves. For credit portfolios and Vasicek-style models, validate PD, asset correlation, worst-case default rates, tail dependence, and sensitivity to macro factors rather than relying on average default behavior.
+
+## Table of Contents
+
+1. [Summary](#summary)
+2. [Definition of correlation](#definition-of-correlation)
+   - [correlation vs. dependence](#correlation-vs-dependence)
+   - [Monitoring correlation](#monitoring-correlation)
+   - [EWMA](#ewma)
+   - [GARCH](#garch)
+3. [Correlation and covariance matrices](#correlation-and-covariance-matrices)
+   - [Consistency condition for covariances](#consistency-condition-for-covariances)
+4. [Multivariate normal distributions](#multivariate-normal-distributions)
+   - [Generating Random Samples from Multivariate Normal Distributions](#generating-random-samples-from-multivariate-normal-distributions)
+   - [Factor models](#factor-models)
+5. [Copulas](#copulas)
+   - [Expressing the approach algebraically](#expressing-the-approach-algebraically)
+   - [Other copulas](#other-copulas)
+   - [Tail dependence](#tail-dependence)
+   - [Multivariate copulas](#multivariate-copulas)
+   - [A factor copula model](#a-factor-copula-model)
+6. [Application to Loan Portfolios: Vasicek's Model](#application-to-loan-portfolios-vasiceks-model)
+   - [Proof of Vasicek's result](#proof-of-vasiceks-result)
+   - [Estimating PD and $\rho$](#estimating-pd-and-rho)
+   - [Alternatives to the Gaussian copula](#alternatives-to-the-gaussian-copula)
 
 ## Definition of correlation
 
@@ -93,5 +122,4 @@
 ### Alternatives to the Gaussian copula
 
 - Alternatives to the one-factor Gaussian copula use heavier-tailed distributions for $F$, $Z_i$, or both, scaled to mean zero and standard deviation one, so that $WCDR(T,X)=\Phi\!\left(\frac{\Psi^{-1}(PD)+\sqrt{\rho}\Theta^{-1}(X)}{\sqrt{1-\rho}}\right)$, where $\Phi$, $\Theta$, and $\Psi$ are the cumulative distributions of $Z_i$, $F$, and $U_i$, respectively, and the model can generate more tail dependence and fit default data better.
-
 

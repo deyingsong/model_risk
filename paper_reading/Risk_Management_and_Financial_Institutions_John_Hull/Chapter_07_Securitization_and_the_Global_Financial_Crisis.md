@@ -1,5 +1,26 @@
 # Chapter 7 Securitization and the Global Financial Crisis
 
+## Summary
+
+This chapter is a case study in how model assumptions, incentives, and opacity can jointly create systemic failure. The mortgage crisis was not caused only by bad loans; it was amplified by securitization structures, negotiated ratings, re-securitization, weak underwriting, misaligned compensation, and investor overreliance on AAA labels. ABS and ABS CDO waterfalls transformed mortgage cash flows into tranches whose losses were highly sensitive to house-price declines, default clustering, and falling recovery rates. Models that assumed benign correlations or treated structured BBB tranches like ordinary BBB bonds understated tail losses.
+
+The daily takeaway is to challenge any model whose output looks attractive because risk has been sliced, transferred, or hidden. Validate collateral quality, underwriting standards, incentive alignment, tranche waterfall logic, correlation assumptions, recovery-rate dependence, and liquidity under stress. Ratings should be treated as inputs to investigate, not substitutes for analysis. Stress testing should use severe macro scenarios, higher default correlation, lower recovery rates, and market illiquidity, especially for structured or re-securitized products. Governance should flag regulatory arbitrage, short-term profit incentives, opaque data, and products that generate unusually high returns for apparently low capital.
+
+## Table of Contents
+
+1. [Summary](#summary)
+2. [The U.S. Housing Market](#the-us-housing-market)
+   - [The relaxation of lending standards](#the-relaxation-of-lending-standards)
+   - [The buble bursts](#the-buble-bursts)
+3. [Securitization](#securitization)
+   - [Asset-backed securities (ABS)](#asset-backed-securities-abs)
+   - [ABS CDOs](#abs-cdos)
+   - [CDOs and ABS CDOs in practice](#cdos-and-abs-cdos-in-practice)
+4. [The Losses](#the-losses)
+5. [What went wrong?](#what-went-wrong)
+   - [Regulatory arbitrage](#regulatory-arbitrage)
+   - [Incentives](#incentives)
+6. [Lessons from the Global Financial Crisis](#lessons-from-the-global-financial-crisis)
 
 ## The U.S. Housing Market
 

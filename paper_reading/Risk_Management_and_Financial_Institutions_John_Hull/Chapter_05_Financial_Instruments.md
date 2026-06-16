@@ -1,5 +1,32 @@
 # Chapter 5 Financial Instruments
 
+## Summary
+
+Financial-instrument labels hide very different payoff mechanics, settlement processes, liquidity profiles, and control risks. Spot, margin, short-sale, forward, futures, swap, option, and structured-product exposures should not be modeled as generic market-risk positions. Futures differ from forwards because of daily settlement, margining, clearing, standardization, and close-out mechanics. OTC derivatives introduce counterparty, documentation, collateral, and valuation uncertainty. Options introduce nonlinear payoff, exercise-style, moneyness, premium, and model-risk issues. Non-traditional derivatives such as weather, oil, gas, electricity, and swing options add basis, physical-delivery, storage, location, seasonality, and operational constraints.
+
+The daily takeaway is to validate the trade representation before validating the model output. Check whether the system correctly captures long versus short exposure, collateral and margin requirements, income owed on shorts, reference-rate conventions, notional versus market value, settlement frequency, delivery terms, and embedded optionality. For model governance, product taxonomy should drive valuation method, risk-factor mapping, stress design, and controls. Unusual profits, rapid growth in complex products, or trades that look offsetting but are fictitious should trigger independent review because operational weaknesses and unauthorized trading can turn simple instruments into large losses.
+
+## Table of Contents
+
+1. [Summary](#summary)
+2. [Long and short positions in assets](#long-and-short-positions-in-assets)
+   - [Short sales](#short-sales)
+3. [Derivatives markets](#derivatives-markets)
+4. [Plain vanilla derivatives](#plain-vanilla-derivatives)
+   - [Forward contracts](#forward-contracts)
+   - [Futures contracts](#futures-contracts)
+   - [LIBOR and its replacements](#libor-and-its-replacements)
+   - [Swaps](#swaps)
+   - [Options](#options)
+   - [Interest rate options](#interest-rate-options)
+5. [Non-traditional derivatives](#non-traditional-derivatives)
+   - [Weather derivatives](#weather-derivatives)
+   - [Oil derivatives](#oil-derivatives)
+   - [Natural gas derivatives](#natural-gas-derivatives)
+   - [Electricity derivatives](#electricity-derivatives)
+6. [Exotic options and structured products](#exotic-options-and-structured-products)
+7. [Risk management challenges](#risk-management-challenges)
+
 ## Long and short positions in assets
 
 - Spot trades are trades that lead to almost immediate, or **"on the spot,"** delivery of the asset.
