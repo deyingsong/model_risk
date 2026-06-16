@@ -1,5 +1,25 @@
 # Chapter 23 Index and Portfolio Markets
 
+## Summary (TLDR)
+
+Index and portfolio markets let investors trade broad market risk through index funds, ETFs, futures, options, and portfolio baskets instead of trading every underlying security separately. Index construction matters: price-weighted, value-weighted, equal-weighted, and total-return indexes embed different assumptions about weights, dividends, rebalancing, and corporate actions. For model risk management, these details are not implementation trivia; they define the benchmark, explain residuals, and affect whether backtests, hedges, and performance attribution are valid.
+
+Index funds aim to replicate dividend-adjusted benchmark returns, but tracking error arises from fees, transaction costs, cash flows, dividend reinvestment timing, sampling, substitutions, and rebalancing choices. Passive indexation is powerful because active management is a zero-sum game before costs and negative-sum after costs, so turnover and fees are central risk and performance drivers. Index products are liquid because they concentrate order flow, reduce adverse-selection risk, and package many component trades into one instrument, but their derivatives introduce basis, roll, margin, settlement, and liquidity risks. Portfolio and basket trading can lower execution cost, yet pricing depends on dealer quotes, end-of-day valuation conventions, and component liquidity.
+
+
+## Table of Contents
+
+
+- [Price indexes](#price-indexes)
+- [Index funds](#index-funds)
+- [The argument for indexation](#the-argument-for-indexation)
+- [Liquidity and price formation in index markets](#liquidity-and-price-formation-in-index-markets)
+  - [Package trading, basket trading, and portfolio trading](#package-trading-basket-trading-and-portfolio-trading)
+- [Index products](#index-products)
+
+
+---
+
 - index market: Index markets trade index products and let traders exchange index risk more cheaply and more liquidly than they could by trading each underlying component instrument separately.
 - index product: Index products include index futures contracts, index option contracts, and securities that represent ownership in index funds, allowing investors and speculators to trade index risk or hedge firm-specific positions.
 - index fund: An index fund is a portfolio that its managers design to replicate the performance of a price index, most often a market equity index but sometimes a debt or sector equity index.
